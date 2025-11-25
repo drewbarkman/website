@@ -1,26 +1,12 @@
 ---
-import '../styles/global.css';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-
-const pageTitle = "projects";
+import SiteLayout from "../layouts/SiteLayout.astro"
+import ProjectCard from "../components/ProjectCard.astro";
 ---
 
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
-        <Header/>
-
-        <h1>{pageTitle}</h1>
-        <p>Work in progress :)</p>
-
-        <Footer/>
-    </body>
-</html>
+<SiteLayout pageTitle="projects">
+    <p>Highlights of my personal and class projects.</p>
+	<div class="project_cards">
+        <ProjectCard projectName="This Website"/>
+        <ProjectCard projectName="Transit Access in Minneapolis"/>
+    </div>
+</SiteLayout>

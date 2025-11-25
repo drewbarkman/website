@@ -1,27 +1,18 @@
 ---
-import '../styles/global.css';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-
-const pageTitle = "about";
+import SiteLayout from "../layouts/SiteLayout.astro"
 ---
 
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
-        <Header/>
-
-        <h2>{pageTitle}</h2>
-        <p>Hi! My name is Drew Barkman, and I'm a second-year at University of Wisconsin-Madison. I'm currently working on my bachelors in Data Science + Cartography/Geographic Information Systems, with a certificate in Photography.</p>
-        <p>Contact me at drewbarkman28@gmail.com (or ajbarkman@wisc.edu if you're part of the university). Also keep up with my work out on my GitHub, Linkedin, or my Photography Instagram.</p>
-        
-		<Footer/>
-    </body>
-</html>
+<SiteLayout pageTitle="about">
+	<p>
+		Hi! My name is Drew Barkman, and I'm a second-year student at the University of Wisconsin-Madison. 
+		I'm currently pursuing a bachelor's in Data Science combined with Cartography/Geographic Information Systems (GIS), plus certificates in Computer Science and Photography. 
+		My goal is to work as a geospatial analyst, harnessing analytical tools like Python, SQL, and R alongside geospatial tools like ArcGIS.
+		I specialize in applying this technical stack for deep data storytelling, insightful analysis, and captivating visualization.
+		In my free time, I enjoy volunteering in progressive politics, capturing my friends on camera, and going on long bike rides.
+	</p>
+	<p>
+		You can reach me directly at drewbarkman28@gmail.com. 
+		If you are part of the university, please use ajbarkman@wisc.edu. 
+		Keep up with my work on LinkedIn, GitHub, and my photography Instagram.
+	</p>
+</SiteLayout>

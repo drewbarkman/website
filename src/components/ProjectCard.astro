@@ -1,0 +1,38 @@
+---
+import placeholder from "../images/placeholder.png";
+import { Image } from 'astro:assets';
+
+const { projectName } = Astro.props;
+const allProjects = Object.values(import.meta.glob('../pages/projects/*.md', { eager: true }));
+const project:any = allProjects.find((project:any) => (project.frontmatter.title === projectName));
+
+
+const allImg:any = Object.values(import.meta.glob('../images/*.png', { eager: true }));
+let img = placeholder;
+
+if (project.frontmatter.img) {
+    const found = allImg.find((imgModule: any) => 
+        imgModule.default.src === project.frontmatter.img.url
+    );
+    if (found) img = (found as any);
+}
+---
+
+<div class="card">
+    <div class="img">
+        <Image src={img} alt={project.frontmatter.image.alt} class="project_img" width="220"/>
+    </div>
+    <div class="info">
+        <div>
+            {project.frontmatter.title}
+        </div>
+        <div>
+            {project.frontmatter.date}
+        </div>
+        <div>
+            {project.frontmatter.tags.join(", ")}
+        </div>
+        <div>
+            <a href={project.frontmatter.github}>read more</a>
+        </div>
+</div>
