@@ -1,18 +1,22 @@
 ---
+import { Image } from "astro:assets"
 import SiteLayout from "../layouts/SiteLayout.astro"
+import profilePic from "../images/profile.jpeg"
+import profilePicMed from "../images/profile_med.jpeg"
 ---
 
 <SiteLayout pageTitle="about">
+	<Image src={profilePic} alt="headshot of drew barkman" width={300} densities={[1.5, 2]}></Image>
 	<p>
 		Hi! My name is Drew Barkman, and I'm a second-year student at the University of Wisconsin-Madison. 
-		I'm currently pursuing a bachelor's in Data Science combined with Cartography/Geographic Information Systems (GIS), plus certificates in Computer Science and Photography. 
-		My goal is to work as a geospatial analyst, harnessing analytical tools like Python, SQL, and R alongside geospatial tools like ArcGIS.
-		I specialize in applying this technical stack for deep data storytelling, insightful analysis, and captivating visualization.
-		In my free time, I enjoy volunteering in progressive politics, capturing my friends on camera, and going on long bike rides.
+		I'm currently pursuing a bachelor's in Data Science combined with Cartography/Geographic Information Systems (GIS), plus certificates in Geospatial Data Science and Photography. 
+		I specialize in applying a technical stack of tools like Python, SQL, and R, alongside geospatial tools like ArcGIS, for deep data storytelling, insightful analysis, and captivating visualization. 
+		In my free time, I enjoy <a href="https://www.dailycardinal.com/staff/drew-barkman" class="about" target="_blank" rel="noopener noreferrer">taking pictures for The Daily Cardinal</a>, volunteering in progressive politics, and going on long bike rides.
+
 	</p>
 	<p>
-		You can reach me directly at drewbarkman28@gmail.com. 
-		If you are part of the university, please use ajbarkman@wisc.edu. 
-		Keep up with my work on LinkedIn, GitHub, and my photography Instagram.
+		You can reach me directly at <a href="mailto:drewbarkman28@gmail.com" class="about" target="_blank" rel="noopener noreferrer">drewbarkman28@gmail.com</a> 
+		(university contacts, please use <a href="mailto:ajbarkman@wisc.edu" class="about" target="_blank" rel="noopener noreferrer">ajbarkman@wisc.edu</a>). 
+		You can also keep up with my work on <a href="https://www.linkedin.com/in/drewbarkman/" class="about" target="_blank" rel="noopener noreferrer">LinkedIn</a> and <a href="https://github.com/drewbarkman/" class="about" target="_blank" rel="noopener noreferrer">GitHub</a>.
 	</p>
 </SiteLayout>

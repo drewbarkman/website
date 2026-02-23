@@ -1,38 +1,42 @@
 ---
-import placeholder from "../images/placeholder.png";
-import { Image } from 'astro:assets';
+// import placeholder from "../images/placeholder.png";
+// import { Image } from 'astro:assets';
 
 const { projectName } = Astro.props;
 const allProjects = Object.values(import.meta.glob('../pages/projects/*.md', { eager: true }));
 const project:any = allProjects.find((project:any) => (project.frontmatter.title === projectName));
+const linkEntries = project && project.frontmatter && project.frontmatter.links
+    ? Object.entries(project.frontmatter.links)
+    : [];
 
+// old image code: might use in future
+// const allImg:any = Object.values(import.meta.glob('../images/*.png', { eager: true }));
+// let img = placeholder;
 
-const allImg:any = Object.values(import.meta.glob('../images/*.png', { eager: true }));
-let img = placeholder;
+// if (project.frontmatter.img) {
+//     const found = allImg.find((imgModule: any) => 
+//         imgModule.default.src === project.frontmatter.img.url
+//     );
+//     if (found) img = (found as any);
+// }
 
-if (project.frontmatter.img) {
-    const found = allImg.find((imgModule: any) => 
-        imgModule.default.src === project.frontmatter.img.url
-    );
-    if (found) img = (found as any);
-}
+// <!-- <div class="img">
+//     <Image src={img} alt={project.frontmatter.image.alt} class="project_img" width="220"/>
+// </div> -->
 ---
 
 <div class="card">
-    <div class="img">
-        <Image src={img} alt={project.frontmatter.image.alt} class="project_img" width="220"/>
-    </div>
     <div class="info">
+        <div><b>{project.frontmatter.title}</b></div>
+        <div>date: {project.frontmatter.date}</div>
+        <div>tools: {project.frontmatter.tags.join(", ")}</div>
         <div>
-            {project.frontmatter.title}
+            links:
+            {linkEntries.length > 0 && linkEntries.map(([label, url], i) => (
+                <span class="link-item" key={label}>
+                    <a href={url} class="project-card-link" target="_blank" rel="noopener noreferrer">{label}</a>{i < linkEntries.length - 1 ? ', ' : ''}
+                </span>
+            ))}
         </div>
-        <div>
-            {project.frontmatter.date}
-        </div>
-        <div>
-            {project.frontmatter.tags.join(", ")}
-        </div>
-        <div>
-            <a href={project.frontmatter.github}>read more</a>
-        </div>
+    </div>
 </div>

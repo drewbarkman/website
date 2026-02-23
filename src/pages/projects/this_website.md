@@ -5,5 +5,6 @@ tags: ["html", "css", "javascript", "astro"]
 image:
     url: "../images/placeholder.png"
     alt: "stand-in"
-github: https://github.com/drewbarkman/website
+links:
+    github: https://github.com/drewbarkman/website
 ---
